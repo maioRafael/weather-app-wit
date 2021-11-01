@@ -87,6 +87,17 @@ export const ForecastWidget = styled.div`
     border-radius:5px;
     padding:15px;
     margin: 1em auto;
+
+    @media(max-width: 500px) { 
+
+        max-width: 300px;
+    }
+
+    @media(max-width: 340px) { 
+
+        max-width: 280px;
+    }
+
 `
 
 export const CustomTooltip = styled.div`

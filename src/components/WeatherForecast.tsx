@@ -1,5 +1,5 @@
 import { ForecastWidget } from "../styles/style";
-import { LineChart, Line, YAxis,Tooltip, CartesianGrid, Legend, XAxis, TooltipProps } from "recharts";
+import { LineChart, Line, YAxis,Tooltip, CartesianGrid, Legend, XAxis, TooltipProps, ResponsiveContainer } from "recharts";
 import { NameType, ValueType } from "recharts/types/component/DefaultTooltipContent";
 import { ForecastData } from "../types/weather";
 import { GraphTooltip } from "./GraphTooltip";
@@ -27,16 +27,18 @@ const renderTooltip = ({ active, payload, label } : TooltipProps<ValueType, Name
 export const WeatherForecast = ( { data, date } : Properties ) => {
 
     return (
-        <ForecastWidget>
+        <ForecastWidget >
             <h1>Forecast {date} - 3 hour</h1>
-            <LineChart width={400} height={250} data={data}>
-                <CartesianGrid strokeDasharray="2 2" />
-                <XAxis dataKey="time" />
-                <YAxis dataKey="temp"/>
-                <Tooltip content={renderTooltip} />
-                <Legend />
-                <Line type="monotone" dataKey="temp" stroke="#82ca9d" />
-            </LineChart>
+            <ResponsiveContainer width="90%" height={250}>
+                <LineChart data={data}>
+                    <CartesianGrid strokeDasharray="2 2" />
+                    <XAxis dataKey="time" />
+                    <YAxis dataKey="temp"/>
+                    <Tooltip content={renderTooltip} />
+                    <Legend />
+                    <Line type="monotone" dataKey="temp" stroke="#82ca9d" />
+                </LineChart>
+            </ResponsiveContainer>
         </ForecastWidget>
     );
 
